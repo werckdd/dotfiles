@@ -1,0 +1,8 @@
+{
+	"tabWidth":4,
+  	"printWidth": 95,
+  	"parser": "flow",
+  	"bracketSpacing":true,
+  	"singleQuote": true,
+  	"semi": true
+}
