@@ -1,12 +1,3 @@
-"|  \/  (_) |                        (_)
-"| .  . |_| | _____  ___   _ ____   ___ _ __ ___  _ __ ___
-"| |\/| | | |/ / _ \/ __| | '_ \ \ / / | '_ ` _ \| '__/ __|
-"| |  | | |   <  __/\__ \ | | | \ V /| | | | | | | | | (__
-"\_|  |_/_|_|\_\___||___/ |_| |_|\_/ |_|_| |_| |_|_|  \___|
-"
-" Author: Mike Hartington
-" repo  : https://github.com/mhartington/dotfiles/
-"
 
 " Setup dein  ---------------------------------------------------------------{{{
 	if (!isdirectory(expand("$HOME/.config/nvim/repos/github.com/Shougo/dein.vim")))
@@ -62,6 +53,8 @@
   call dein#add('junegunn/gv.vim')
 " call dein#add('lambdalisue/gina.vim')
   call dein#add('scrooloose/nerdtree')
+" 给nerdtree menu菜单添加复制选择文件路径
+  call dein#add('mortonfox/nerdtree-clip')
 " 图标
   call dein#add('ryanoasis/vim-devicons')
 " 图标高亮
@@ -84,6 +77,7 @@
   call dein#add('tpope/vim-repeat')
   call dein#add('tpope/vim-surround')
   call dein#add('AndrewRadev/splitjoin.vim')
+  call dein#add('tpope/vim-commentary')
 "  call dein#add('majutsushi/tagbar')
 "  call dein#add('Yggdroot/indentLine')
 "  call dein#add('tomtom/tcomment_vim')
@@ -394,6 +388,10 @@ autocmd BufWritePost,BufReadPost,BufLeave *
 " -可以打开或者关闭nerdtree
   map <silent> - :NERDTreeToggle<CR>
 
+  let NERDTreeIgnore = ['\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index',
+                    \ 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json',
+                    \ '.*\.o$', 'db.db', 'tags.bak']
+  let NERDTreeBookmarksFile='~/.config/nvim/NerdBookmarks.txt'
   let NERDTreeShowHidden=1
   let NERDTreeHijackNetrw=0
   let g:WebDevIconsUnicodeDecorateFolderNodes = 1
@@ -402,8 +400,8 @@ autocmd BufWritePost,BufReadPost,BufLeave *
   let g:WebDevIconsOS = 'Darwin'
   let NERDTreeMinimalUI=1
   let NERDTreeCascadeSingleChildDir=1
-  let g:NERDTreeHeader = 'hello'
-
+  let g:NERDTreeHeader = 'hello QJ'
+  
 " vim-nerdtree-syntax-highlight  
   let g:NERDTreeSyntaxDisableDefaultExtensions = 1
   let g:NERDTreeDisableExactMatchHighlight = 1

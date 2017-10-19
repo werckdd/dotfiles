@@ -85,6 +85,7 @@ alias zshconfig="nvim ~/.zshrc"
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
 alias tmux='tmux -2'
 alias htop="sudo htop"
+alias -s vim=nvim
 
 #enables colorfor iTerm
 export TERM=screen-256color
