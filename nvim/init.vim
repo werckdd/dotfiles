@@ -13,44 +13,19 @@
   call dein#add('xolox/vim-misc')
 "  call dein#add('haya14busa/dein-command.vim')
 " syntax
-  call dein#add('othree/html5.vim')
-" JavaScript Syntax  
-"  call dein#add('sheerun/vim-polyglot')
-  call dein#add('othree/yajs.vim')
-  call dein#add('othree/es.next.syntax.vim')
-"  call dein#add('othree/jsdoc-syntax.vim')
-"  call dein#add('heavenshell/vim-jsdoc')
-"  call dein#add('pangloss/vim-javascript')
-"  call dein#add('mxw/vim-jsx')
-"  call dein#add('elzr/vim-json')
-"  call dein#add('jelera/vim-javascript-syntax')
-" TypeScript Syntax  
-  call dein#add('leafgarland/typescript-vim')
-"  call dein#add('skwp/vim-html-escape')
-"  call dein#add('hail2u/vim-css3-syntax')
-"  call dein#add('ap/vim-css-color')
-"  call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
-"  call dein#add('dhruvasagar/vim-table-mode')
-"  call dein#add('nelstrom/vim-markdown-folding', {'on_ft': 'markdown'})
-"  call dein#add('rhysd/vim-grammarous')
-  call dein#add('tmhedberg/SimpylFold', {'on_ft': 'python'})
-"  call dein#add('tmux-plugins/vim-tmux')
- " 标签自动闭合
-"  call dein#add('itmammoth/doorboy.vim')
-" 标签自动提醒
-  call dein#add('valloric/MatchTagAlways')
-
-
+  call dein#add('othree/html5.vim', {'on_ft': ['javascript.jsx', 'html', 'css']})
+  call dein#add('othree/yajs.vim', {'on_ft': 'javascript'})
+  call dein#add('othree/es.next.syntax.vim', {'on_ft': 'javascript'})
 
 "  call dein#add('chemzqm/vim-easygit')
 "  call dein#add('jreybert/vimagit', {'on_cmd': ['Magit', 'MagitOnly']})
 "  call dein#add('sgeb/vim-diff-fold')
-  call dein#add('tpope/vim-fugitive')
+" call dein#add('tpope/vim-fugitive')
 " 使Gbrowse指令成功
-  call dein#add('tpope/vim-rhubarb')
+"  call dein#add('tpope/vim-rhubarb')
 " 在文本中显示git diff
-  call dein#add('airblade/vim-gitgutter')
-  call dein#add('junegunn/gv.vim')
+  " call dein#add('airblade/vim-gitgutter')
+  " call dein#add('junegunn/gv.vim')
 " call dein#add('lambdalisue/gina.vim')
   call dein#add('scrooloose/nerdtree')
 " 给nerdtree menu菜单添加复制选择文件路径
@@ -62,8 +37,9 @@
 " call dein#add('Xuyuanp/nerdtree-git-plugin')
   
 " 下载不下来 call dein#add('Asheq/close-buffers.vim')
-  call dein#add('tpope/vim-unimpaired')
+" call dein#add('tpope/vim-unimpaired')
 "  call dein#add('neomake/neomake', {'on_cmd': 'Neomake'})
+" Asynchronous Lint Engine
   call dein#add('w0rp/ale')
 "  call dein#add('editorconfig/editorconfig-vim')
 "  call dein#add('AndrewRadev/switch.vim')
@@ -71,34 +47,34 @@
   call dein#add('vim-airline/vim-airline')
 
 " colorScheme and airline-colorScheme
+  call dein#add('trevordmiller/nova-vim')
 "  call dein#add('vim-airline/vim-airline-themes')
 "  call dein#add('sunuslee/vim-plugin-random-colorscheme-picker')
-" git help
+" basic control help
   call dein#add('tpope/vim-repeat')
   call dein#add('tpope/vim-surround')
-  call dein#add('AndrewRadev/splitjoin.vim')
   call dein#add('tpope/vim-commentary')
 "  call dein#add('majutsushi/tagbar')
 "  call dein#add('Yggdroot/indentLine')
 "  call dein#add('tomtom/tcomment_vim')
   call dein#add('mattn/emmet-vim', {'on_ft': ['javascript.jsx', 'html', 'css']})
-"  call dein#add('sbdchd/neoformat')
-" deoplete stuff
-" " call dein#add('Shougo/deoplete.nvim')
-" 补全
-  call dein#add('roxma/nvim-completion-manager')
+ call dein#add('sbdchd/neoformat')
+
+" 补全总控制
+  " call dein#add('Shougo/deoplete.nvim',{'do':':UpdateRemotePlugins' })
+ call dein#add('roxma/nvim-completion-manager')
 " javascript补全
-  call dein#add('roxma/ncm-flow')
+  " call dein#add('roxma/ncm-flow', {'on_ft': ['javascript.jsx', 'html', 'css']})
 " c/c++补全  
-  call dein#add('roxma/ncm-clang')
+  " call dein#add('roxma/ncm-clang')
 " 代码片段
-  call dein#add('honza/vim-snippets')
+  " call dein#add('honza/vim-snippets')
   call dein#add('SirVer/ultisnips')
 "  call dein#add('Shougo/denite.nvim')
 " call dein#add('ctrlpvim/ctrlp.vim')
 " 文件，代码搜索工具
-  call dein#add('junegunn/fzf', { 'build': './install', 'rtp': '' })
-  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+" call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': }) 
+" call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
   call dein#add('easymotion/vim-easymotion')
 
 " call dein#add('Shougo/neomru.vim')
@@ -111,7 +87,8 @@
 "  call dein#add('ujihisa/neco-look')
 "  call dein#add('davidhalter/jedi-vim', {'on_ft': 'python'})
 "  call dein#add('zchee/deoplete-jedi')
-"  call dein#add('zchee/nvim-go', {'build': 'gb build', 'on_ft': 'go'})
+  call dein#add('fatih/vim-go', {'on_ft': 'goclang'})
+  " call dein#add('zchee/nvim-go', {'on_ft': 'goclang'})
 "  call dein#add('zchee/deoplete-go')
 "  局部片段高亮
   call dein#add('junegunn/limelight.vim')
@@ -135,7 +112,12 @@
 "  call dein#add('chemzqm/denite-git')
 "  call dein#add('sjl/vitality.vim')
 "  call dein#add('lilydjwg/fcitx.vim')
-
+" 符号自动补全
+  " call dein#add('Raimondi/delimitMate')
+" 代码展开还是合并
+  call dein#add('AndrewRadev/splitjoin.vim')
+" 显示对齐线
+" call dein#add('Yggdroot/indentLine')
 
   if dein#check_install()
     call dein#install()
@@ -166,7 +148,7 @@
   set  relativenumber
   set numberwidth=1
   set tabstop=4 shiftwidth=4 
-  set conceallevel=0
+  " set conceallevel=0
 " 命令行自动补全所使用的菜单  
   set wildmenu
   set laststatus=2
@@ -220,7 +202,18 @@ autocmd BufWritePost,BufReadPost,BufLeave *
   set spell
 
 " }}}
-  
+
+" 显示对齐虚线----------------------------------------------------------{{{
+	" 显示tab和空格
+	set list
+	" 设置tab和空格样式
+	set lcs=tab:\¦\ 
+	" 设定行首tab为灰色
+	highlight LeaderTab guifg=#666666
+	" 匹配行首tab
+	match LeaderTab /^\t/
+" }}}
+
 " System mappings  ----------------------------------------------------------{{{
 " 整行移动
   noremap <s-up> :m -2<CR>
@@ -241,12 +234,13 @@ autocmd BufWritePost,BufReadPost,BufLeave *
 " 关闭当前buff
   nnoremap <leader>= :bdelete<cr>
 " 闭合匹配
-  inoremap ( ()<ESC>i
-  inoremap [ []<ESC>i
-  inoremap { {}<ESC>i
-  inoremap < <><ESC>i
-  inoremap " ""<ESC>i
-  inoremap ' ''<ESC>i
+"  inoremap ( ()<ESC>i
+"  inoremap [ []<ESC>i
+"  inoremap { {}<ESC>i
+"  inoremap { {<CR>}<ESC>kA<CR>
+"  inoremap < <><ESC>i
+"  inoremap " ""<ESC>i
+"  inoremap ' ''<ESC>i
 " 插入模式下的换行并新建一行
 "  inoremap <leader>n <esc>o 
 " exit insert, dd line, enter insert
@@ -281,13 +275,17 @@ autocmd BufWritePost,BufReadPost,BufLeave *
 " nnoremap : ;
 " give it a try and you will like it
   nnoremap ; :
-  inoremap <c-f> <c-x><c-f>
+  " inoremap <c-f> <c-x><c-f>
 " Copy to osx clipboard
 " vnoremap <C-c> "*y<CR>
 " vnoremap y "*y<CR>
 " nnoremap Y "*Y<CR>
 " vnoremap y myy`y
 " vnoremap Y myY`y
+" delete not cut(DD or dd)
+	nnoremap <leader>d "_d
+	xnoremap <leader>d "_d
+	xnoremap <leader>p "_dP
 
 
 
@@ -314,72 +312,12 @@ autocmd BufWritePost,BufReadPost,BufLeave *
 
 "}}}
 
-" Javascript ----------------------------------------------------------------{{{
-
-  " let g:neoformat_enabled_javascript = ['prettier']
-  let g:neomake_javascript_enabled_makers = ['eslint']
-
-  let g:jsx_ext_required = 1
-  let g:jsdoc_allow_input_prompt = 1
-  let g:jsdoc_input_description = 1
-  let g:vim_json_syntax_conceal = 0
-  let g:tern#command = ['tern']
-  let g:tern#arguments = ['--persistent']
-
-" }}}
-
-" Java ----------------------------------------------------------------------{{{
-
- \
-
-"}}}
-
-" C ----------------------------------------------------------------------{{{
-
-
-
-"}}}
-
-" HTML ----------------------------------------------------------------------{{{
-
-
-" }}}
-
-" Go ------------------------------------------------------------------------{{{
-
-"}}}
-
-" CSS -----------------------------------------------------------------------{{{
-
-"}}}
-
-" Lua -----------------------------------------------------------------------{{{
-
-"}}}
-
-" Python --------------------------------------------------------------------{{{
-
-  let g:python_host_prog = '/usr/local/bin/python2'
-  let g:python3_host_prog = '/usr/local/bin/python3'
-  " let $NVIM_PYTHON_LOG_FILE='nvim-python.log'
-  let g:jedi#auto_vim_configuration = 0
-  let g:jedi#documentation_command = "<leader>k"
-
-" }}}
-
-" Fold, gets it's own section  ----------------------------------------------{{{
-
-  " 折叠和展开代码块
-  nnoremap <leader>T za
-  vnoremap <Space>T za
-
-
-" }}}
-
-" Git -----------------------------------------------------------------------{{{
-
-  set signcolumn=yes
-
+" neoformat----------------------------------------------------------------{{{
+	let g:neoformat_javascript_prettier = {
+		  \ 'exe': './node_modules/.bin/prettier',
+		  \ 'args': ['--write', '--config .prettierrc'],
+		  \ 'replace': 1
+		  \ }
 " }}}
 
 " NERDTree ------------------------------------------------------------------{{{
@@ -442,6 +380,31 @@ autocmd BufWritePost,BufReadPost,BufLeave *
   tmap <leader>w <c-\><c-n>:bp! <BAR> bd! #<CR>
 " 打开终端
   nmap <leader>t :term<cr>
+let g:term_buf = 0
+function! Term_toggle()
+  1wincmd w
+  if g:term_buf == bufnr("")
+    setlocal bufhidden=hide
+    close
+  else
+    rightbelow new
+    12winc -
+    try
+      exec "buffer ".g:term_buf
+    catch
+      call termopen("bash", {"detach": 0})
+      let g:term_buf = bufnr("")
+    endtry
+    set laststatus=0
+    startinsert!
+  endif
+endfunction
+nnoremap <f4> :call Term_toggle()<cr>
+
+" Terminal go back to normal mode
+tnoremap <Esc> <C-\><C-n>
+" When switching to terminal windows it goes into insert mode automatically
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " }}}
 
 " Vim-Devicons 带后缀的图标-------------------------------------------------------------0{{{
@@ -599,11 +562,12 @@ autocmd BufWritePost,BufReadPost,BufLeave *
 
 	let g:ale_fixers = {
 	\   'javascript': ['prettier','eslint'],
-	\   'c':['clang-format']
+	\   'c':['clang-format'],
+	\   'yaml':['yamllint']
 	\}
 	let g:ale_javascript_prettier_use_local_config = 1
 	"let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
-	let g:ale_fix_on_save = 1
+	let g:ale_fix_on_save = 0
 
 	let g:ale_linters = {
 	\   'javascript': ['eslint'],
@@ -665,19 +629,48 @@ autocmd BufWritePost,BufReadPost,BufLeave *
 
 " fzf.vim 和 ultisnips-------------------------------------------------------------------{{{
 
-  set rtp+=/usr/local/opt/fzf
+  " set rtp+=/usr/local/opt/fzf
 
   " ultisnips
-    let g:UltiSnipsSnippetDirectories = ['/Users/qj/.config/nvim/UltiSnips']
-  " set rtp+=/Users/qj/.config/nvim/ultisnips
-  " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-	let g:UltiSnipsExpandTrigger="<tab>"
-	let g:UltiSnipsJumpForwardTrigger="<c-b>"
-	let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+    " let g:UltiSnipsSnippetDirectories = ['/Users/qj/.config/nvim/UltiSnips']
+  set rtp+=/Users/qj/.config/nvim/ultisnips
+	let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+	let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+	let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+	let g:UltiSnipsRemoveSelectModeMappings = 0
+	" optional
+	inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+	" 为了使inoremap <c-x><c-k> <c-x><c-k>成功:w
+	" inoremap <c-x><c-k> <c-x><c-k>
+	" let g:UltiSnipsListSnippets="<c-s-j>"
 	" If you want :UltiSnipsEdit to split your window.
 	let g:UltiSnipsEditSplit="vertical"
 "}}} 
 
+"" Shougo/deoplete.nvim----------------------------------------------------{{{
+" let g:deoplete#enable_at_startup = 1
+""}}}
+
+"" nvim-completion-manager----------------------------------------------------{{{
+	" don't give |ins-completion-menu| messages. 
+	set shortmess+=c
+
+
+	imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
+    imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
+	inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+	inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+	"为了和delimitMateCR插件不冲突
+	" imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-u>":"\<CR>")
+
+    " inoremap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
+	" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+	" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+	"为了和delimitMateCR插件不冲突
+	"  imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : <Plug>delimitMateCR")
+		"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "<Plug>delimitMateS-Tab"
+
+""}}}
 
 " syntax-------------------------------------------------------------------{{{
 
@@ -687,26 +680,11 @@ autocmd BufWritePost,BufReadPost,BufLeave *
 
 "junegunn/limelight.vim-------------------------------------------------------------------{{{
 
-  nnoremap <S-l> :Limelight!!<cr>
+  nnoremap <C-l> :Limelight!!<cr>
 
 "}}} 
 
-"multi_cursor-------------------------------------------------------------------{{{
 
-  let g:multi_cursor_prev_key='<m-p>'
-  let g:multi_cursor_skip_key='<m-x>'
-  let g:multi_cursor_quit_key='<Esc>'
-  let g:multi_cursor_next_key='<m-n>'
-
-"}}} 
-
-" easymotion ------------------------------------------------------------------{{{
-"  nmap <Leader>n <Plug>(easymotion-sn)
-"  nmap <Leader>m <Plug>(easymotion-tn)
-"  nmap <s-n>  <Plug>(easymotion-next)
-"  nmap <s-m> <Plug>(easymotion-prev)
-
-"}}} 
 
 " deoplete.vim ------------------------------------------------------------------{{{
 
@@ -736,14 +714,73 @@ autocmd BufWritePost,BufReadPost,BufLeave *
 		\ 'xml' : 1,
 		\ 'jinja' : 1,
 	\}
-	nmap <leader>% :MtaJumpToOtherTag<cr>
 	let g:mta_use_matchparen_group=1
 	let g:mta_set_default_matchtag_color=0
 	highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=grey guibg=lightgreen
 "}}}
-" nvim-completion-manager------------------------------------------------------------------{{{
 
-	map <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
-	imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")	
-	
+
+" 自动补全括号，大括号,分号等,还有自动另起一行，space括号中前后自动空出2个
+" Raimondi/delimitMate------------------------------------------------------------------{{{
+
+	let delimitMate_expand_cr = 2
+"	au FileType mail let b:delimitMate_expand_cr = 2
+	let delimitMate_expand_space = 1
+"  au FileType tcl let b:delimitMate_expand_space = 1
+
+" 跳出括号内，到括号外
+	" imap <S-l> <Plug>delimitMateS-Tab
+	" imap <C-.> <Plug>delimitMateJumpMany
+
+
 "}}}
+
+" 查字典sudo pip install ici
+"nmap <Leader>y :!echo --==<C-R><C-w>==-- ;ici <C-R><C-W><CR>
+
+"应对homebrew更改python2为python@2
+ let g:python_host_prog = "/usr/local/Cellar/python@2/2.7.14_1/bin/python2"
+
+" terryma/vim-multiple-cursors------------------------------------------------------------------{{{
+
+	let g:multi_cursor_use_default_mapping=0
+	" Default mapping
+	let g:multi_cursor_next_key='<C-n>'
+	let g:multi_cursor_prev_key='<C-p>'
+	let g:multi_cursor_skip_key='<C-x>'
+	let g:multi_cursor_quit_key='<Esc>'
+"}}}
+
+" 代码快速跳转
+" easymotion ------------------------------------------------------------------{{{
+"  nmap <Leader>n <Plug>(easymotion-sn)
+"  nmap <Leader>m <Plug>(easymotion-tn)
+"  nmap <s-n>  <Plug>(easymotion-next)
+"  nmap <s-m> <Plug>(easymotion-prev)
+
+"}}} 
+
+" Yggdroot/indentLine ------------------------------------------------------------------{{{
+	let g:indentLine_enabled = 1
+	let g:indentLine_concealcursor = 0
+  let g:indentLine_char = '┆'
+  let g:indentLine_faster = 1
+"}}} 
+
+" ryanoasis/vim-devicons ------------------------------------------------------------------{{{
+	let g:webdevicons_enable_denite = 0
+"}}} 
+
+" vim-go ------------------------------------------------------------------{{{
+	let g:go_def_mapping_enabled = 0
+    let g:go_loaded_gosnippets = 1
+    let g:go_snippet_engine = "ultisnips "
+	let g:go_highlight_types = 1
+	let g:go_highlight_functions = 1
+	let g:go_highlight_operators = 1
+	let g:go_highlight_extra_types = 1
+	let g:go_highlight_methods = 1
+	let g:go_auto_type_info = 1
+	nnoremap <S-j> :cnext<cr>
+	nnoremap <S-k> :cprevious<cr>
+"}}} 

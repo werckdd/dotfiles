@@ -51,9 +51,14 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump osx brew node npm)
+plugins=(git osx brew node npm zsh-autosuggestions)
+
+ # install autojump
+#[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 
 source $ZSH/oh-my-zsh.sh
+#incr插件
+#source  ~/.oh-my-zsh/custom/plugins/incr/incr-0.2.zsh
 
 # User configuration
 
@@ -95,4 +100,13 @@ PATH=$PATH:/usr/local/mysql-5.7.18-macos10.12-x86_64/bin
 
 # added by Anaconda2 4.4.0 installer
 export PATH="/Users/qj/anaconda/bin:$PATH"
+
+# add golang
+export GOROOT=/usr/local/opt/go/libexec/
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export GOPATH=$HOME/OneDrive\ -\ zju.edu.cn/CS/Exercise/go
+# export GOBIN=$GOPATH/bin
+#为了解决go get timeout
+export http_proxy=http://127.0.0.1:1087;
+export https_proxy=http://127.0.0.1:1087;
 
