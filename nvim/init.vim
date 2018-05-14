@@ -61,15 +61,18 @@
  call dein#add('sbdchd/neoformat')
 
 " 补全总控制
-  " call dein#add('Shougo/deoplete.nvim',{'do':':UpdateRemotePlugins' })
- call dein#add('roxma/nvim-completion-manager')
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('zchee/deoplete-go', {'build': 'make'})
+ " call dein#add('roxma/nvim-completion-manager')
 " javascript补全
   " call dein#add('roxma/ncm-flow', {'on_ft': ['javascript.jsx', 'html', 'css']})
 " c/c++补全  
   " call dein#add('roxma/ncm-clang')
 " 代码片段
   " call dein#add('honza/vim-snippets')
-  call dein#add('SirVer/ultisnips')
+  " call dein#add('SirVer/ultisnips')
+ call dein#add('Shougo/neosnippet.vim')
+ call dein#add('Shougo/neosnippet-snippets')
 "  call dein#add('Shougo/denite.nvim')
 " call dein#add('ctrlpvim/ctrlp.vim')
 " 文件，代码搜索工具
@@ -87,14 +90,12 @@
 "  call dein#add('ujihisa/neco-look')
 "  call dein#add('davidhalter/jedi-vim', {'on_ft': 'python'})
 "  call dein#add('zchee/deoplete-jedi')
-  call dein#add('fatih/vim-go', {'on_ft': 'goclang'})
+  call dein#add('fatih/vim-go')
   " call dein#add('zchee/nvim-go', {'on_ft': 'goclang'})
 "  call dein#add('zchee/deoplete-go')
 "  局部片段高亮
   call dein#add('junegunn/limelight.vim')
 "  call dein#add('Konfekt/FastFold')
-"  call dein#add('Shougo/neosnippet.vim')
-"  call dein#add('Shougo/neosnippet-snippets')
 "  call dein#add('Shougo/echodoc.vim')
 "  call dein#add('mhinz/vim-sayonara')
 "  call dein#add('mattn/webapi-vim')
@@ -418,9 +419,61 @@ au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 
 
+" deoplete -------------------------------------------------------{{{
+
+	let g:deoplete#enable_at_startup = 1
+	let g:deoplete#enable_smart_case = 1
+	let g:deoplete#file#enable_buffer_path = 1
+	let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+""}}}
+
+" neosnippet -------------------------------------------------------{{{
+	imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+	smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+	xmap <C-k>     <Plug>(neosnippet_expand_target)
+	imap <expr><TAB>
+	\ pumvisible() ? "\<C-n>" :
+	\ neosnippet#expandable_or_jumpable() ?
+	\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+	smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+	\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+	imap <expr><CR>
+	\ (pumvisible() && neosnippet#expandable()) ?
+	\ "\<Plug>(neosnippet_expand)" : "\<CR>"
+
+	" For conceal markers.
+	if has('conceal')
+	  set conceallevel=2 concealcursor=niv
+ 	endif
+
+	" Enable snipMate compatibility feature.
+	let g:neosnippet#enable_snipmate_compatibility = 1
+"}}}
+
+" nvim-completion-manager----------------------------------------------------{{{
+	" don't give |ins-completion-menu| messages. 
+	" set shortmess+=c
+
+
+	" imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
+    " imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
+	" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+	" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+	"为了和delimitMateCR插件不冲突
+	" imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-u>":"\<CR>")
+
+    " inoremap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
+	" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+	" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+	"为了和delimitMateCR插件不冲突
+	"  imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : <Plug>delimitMateCR")
+		"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "<Plug>delimitMateS-Tab"
+
+""}}}
+
 " Emmet customization -------------------------------------------------------{{{
 
-  let g:user_emmet_leader_key = '<Tab>'
+  let g:user_emmet_leader_key = '<C-o>'
   let g:user_emmet_settings = {
   \  'javascript.jsx' : {
   \      'extends' : 'jsx',
@@ -625,53 +678,6 @@ au BufEnter * if &buftype == 'terminal' | :startinsert | endif
  let g:SimpylFold_docstring_preview=1
 
 "}}}  
-
-
-" fzf.vim 和 ultisnips-------------------------------------------------------------------{{{
-
-  " set rtp+=/usr/local/opt/fzf
-
-  " ultisnips
-    " let g:UltiSnipsSnippetDirectories = ['/Users/qj/.config/nvim/UltiSnips']
-  set rtp+=/Users/qj/.config/nvim/ultisnips
-	let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
-	let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
-	let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
-	let g:UltiSnipsRemoveSelectModeMappings = 0
-	" optional
-	inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
-	" 为了使inoremap <c-x><c-k> <c-x><c-k>成功:w
-	" inoremap <c-x><c-k> <c-x><c-k>
-	" let g:UltiSnipsListSnippets="<c-s-j>"
-	" If you want :UltiSnipsEdit to split your window.
-	let g:UltiSnipsEditSplit="vertical"
-"}}} 
-
-"" Shougo/deoplete.nvim----------------------------------------------------{{{
-" let g:deoplete#enable_at_startup = 1
-""}}}
-
-"" nvim-completion-manager----------------------------------------------------{{{
-	" don't give |ins-completion-menu| messages. 
-	set shortmess+=c
-
-
-	imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
-    imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
-	inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-	inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-	"为了和delimitMateCR插件不冲突
-	" imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-u>":"\<CR>")
-
-    " inoremap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
-	" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-	" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-	"为了和delimitMateCR插件不冲突
-	"  imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : <Plug>delimitMateCR")
-		"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "<Plug>delimitMateS-Tab"
-
-""}}}
-
 " syntax-------------------------------------------------------------------{{{
 
   let g:javascript_plugin_jsdoc = 1
@@ -681,17 +687,6 @@ au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 "junegunn/limelight.vim-------------------------------------------------------------------{{{
 
   nnoremap <C-l> :Limelight!!<cr>
-
-"}}} 
-
-
-
-" deoplete.vim ------------------------------------------------------------------{{{
-
-	" Use deoplete.
-	let g:deoplete#enable_at_startup = 1
-
-"}}} 
 
 " vim-session ------------------------------------------------------------------{{{
 
@@ -774,7 +769,7 @@ au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " vim-go ------------------------------------------------------------------{{{
 	let g:go_def_mapping_enabled = 0
     let g:go_loaded_gosnippets = 1
-    let g:go_snippet_engine = "ultisnips "
+    let g:go_snippet_engine = "neosnippet"
 	let g:go_highlight_types = 1
 	let g:go_highlight_functions = 1
 	let g:go_highlight_operators = 1
