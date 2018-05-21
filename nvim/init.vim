@@ -90,7 +90,7 @@
 "  call dein#add('ujihisa/neco-look')
 "  call dein#add('davidhalter/jedi-vim', {'on_ft': 'python'})
 "  call dein#add('zchee/deoplete-jedi')
-  call dein#add('fatih/vim-go')
+  call dein#add('fatih/vim-go', {'build':'GoUpdateBinaries'})
   " call dein#add('zchee/nvim-go', {'on_ft': 'goclang'})
 "  call dein#add('zchee/deoplete-go')
 "  局部片段高亮
@@ -114,7 +114,7 @@
 "  call dein#add('sjl/vitality.vim')
 "  call dein#add('lilydjwg/fcitx.vim')
 " 符号自动补全
-  " call dein#add('Raimondi/delimitMate')
+  call dein#add('Raimondi/delimitMate')
 " 代码展开还是合并
   call dein#add('AndrewRadev/splitjoin.vim')
 " 显示对齐线
@@ -421,16 +421,23 @@ au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 " deoplete -------------------------------------------------------{{{
 
+	set completeopt-=preview
 	let g:deoplete#enable_at_startup = 1
 	let g:deoplete#enable_smart_case = 1
-	let g:deoplete#file#enable_buffer_path = 1
+	" let g:deoplete#file#enable_buffer_path = 1
 	let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+	" let g:deoplete#sources#go#use_cache = 1
+	" let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+	" let g:deoplete#sources = {}
+    " let g:deoplete#sources.go = ['buffer', 'go']
+	let g:deoplete#sources#go#cgo = 0
 ""}}}
 
 " neosnippet -------------------------------------------------------{{{
-	imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-	smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-	xmap <C-k>     <Plug>(neosnippet_expand_target)
+"}}} 
+	imap <S-k>     <Plug>(neosnippet_expand_or_jump)
+	smap <S-k>     <Plug>(neosnippet_expand_or_jump)
+	xmap <S-k>     <Plug>(neosnippet_expand_target)
 	imap <expr><TAB>
 	\ pumvisible() ? "\<C-n>" :
 	\ neosnippet#expandable_or_jumpable() ?
@@ -439,12 +446,13 @@ au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 	\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 	imap <expr><CR>
 	\ (pumvisible() && neosnippet#expandable()) ?
-	\ "\<Plug>(neosnippet_expand)" : "\<CR>"
+	\"\<Plug>(neosnippet_expand)" : "\<Plug>delimitMateCR"
+	 "\<Plug>(neosnippet_expand)" : "\<CR>"
 
 	" For conceal markers.
-	if has('conceal')
-	  set conceallevel=2 concealcursor=niv
- 	endif
+	" if has('conceal')
+	"   set conceallevel=2 concealcursor=niv
+ 	" endif
 
 	" Enable snipMate compatibility feature.
 	let g:neosnippet#enable_snipmate_compatibility = 1
@@ -718,14 +726,14 @@ au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " 自动补全括号，大括号,分号等,还有自动另起一行，space括号中前后自动空出2个
 " Raimondi/delimitMate------------------------------------------------------------------{{{
 
-	let delimitMate_expand_cr = 2
-"	au FileType mail let b:delimitMate_expand_cr = 2
+	let delimitMate_expand_cr = 1
+	au FileType mail let b:delimitMate_expand_cr = 1
 	let delimitMate_expand_space = 1
-"  au FileType tcl let b:delimitMate_expand_space = 1
+	au FileType tcl let b:delimitMate_expand_space = 1
 
 " 跳出括号内，到括号外
-	" imap <S-l> <Plug>delimitMateS-Tab
-	" imap <C-.> <Plug>delimitMateJumpMany
+	imap <S-l> <Plug>delimitMateS-Tab
+	imap <C-.> <Plug>delimitMateJumpMany
 
 
 "}}}
@@ -776,6 +784,8 @@ au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 	let g:go_highlight_extra_types = 1
 	let g:go_highlight_methods = 1
 	let g:go_auto_type_info = 1
+	let g:go_gocode_unimported_packages = 1
+	let g:go_gocode_propose_builtins = 1 
 	nnoremap <S-j> :cnext<cr>
 	nnoremap <S-k> :cprevious<cr>
-"}}} 
+
